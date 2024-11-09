@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Image from "next/image";
-import Nav from "./components/nav";
-import ImgText from "./components/imgText";
+
 
 
 
@@ -20,12 +18,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="flex justify-between items-center bg-black text-white font-bold  p-4">
-          <ImgText src="/vercel.svg"  href="/" >Home</ImgText>
-          <Nav link="/posts" >Posts</Nav>
-          <Nav link="/icon" >Icon</Nav>
-          <ImgText src="/window.svg"  href="/dashbord" >Dasbord</ImgText>
-        </header>
         {children}
       </body>
     </html>
