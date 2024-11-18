@@ -1,19 +1,23 @@
 'use server'
-import { revalidatePath } from "next/cache";
-import { PrismaClient } from "@prisma/client";
 
-export default async function DeleteData(itemId) {
+import { revalidatePath } from "next/cache"
+import { PrismaClient } from "@prisma/client"
+
+
+export default async function DeleteData(id:number) {
 
         const prisma = new PrismaClient()
-            try{
-                
+        try{
+            
             const deleted = await prisma.notes.delete({
-                where:{id:item.id},
+                where:{id:id},
             })
             console.log(deleted)
-            }catch(err){
+        }catch(err){
                 console.log(err)
-            }
-            revalidatePath('/')
-          }
+        }
+        revalidatePath("/home")
+}
+    
+
 

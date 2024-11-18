@@ -17,6 +17,13 @@ model Notes {
   id Int @id @default(autoincrement())
   title String 
   note String
+  checked Boolean @default(false)
   createdAt DateTime @default(now())
 
+}
+
+model Msgs {
+  id Int @id @default(autoincrement())
+  msg String
+  createdAt DateTime @default(now())
 }

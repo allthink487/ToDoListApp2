@@ -6,16 +6,15 @@ import { revalidatePath } from "next/cache"
 
 
 
-export default async function PostData(formData:FormData) {
+export default async function PostChat(formData:FormData) {
     const prisma = new PrismaClient() 
 
     try{
         
          
-        await prisma.notes.create({
+        await prisma.msgs.create({
         data:{
-            title:formData.get('title') as string,
-            note:formData.get('note') as string,
+            msg:formData.get('msg') as string,
             
         },
     })
