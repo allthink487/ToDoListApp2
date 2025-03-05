@@ -9,21 +9,29 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model Notes {
+model User{
   id Int @id @default(autoincrement())
-  title String
-  note String
-  checked Boolean @default(false)
-  createdAt DateTime @default(now())
+  pseudo String
+  email String 
+  password Int
+  pusblish Articles[]
 
 }
 
-model Msgs {
+model Articles{
   id Int @id @default(autoincrement())
-  msg String
-  createdAt DateTime @default(now())
+  title String
+  msg String @db.Text
+  user User @relation(fields: [userId],references: [id])
+  imgUrl String @db.Text
+  imgWidth String
+  imgHeight String
+  imgDisplay_name String
+  publishAt DateTime @default(now())
+  userId Int
+
 }
